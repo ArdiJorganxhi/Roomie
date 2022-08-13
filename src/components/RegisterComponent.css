@@ -1,0 +1,76 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+    background-image: url('./images/login-register-background.png');
+    background-size: cover;
+    overflow: hidden;
+}
+
+.register{
+
+    padding: 70px;
+    
+
+}
+
+.register-field{
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.register-field input{
+
+    padding-top: 50px;
+}
+
+.register-fill{
+
+    border: none;
+	border-bottom: 2px solid #fff;
+	background: none;
+	padding: 10px;
+	padding-left: 1px;
+	font-weight: 700;
+	width: 30%;
+	transition: .2s;
+}
+
+.register-fill:active, .register-fill:focus, .register-fill:hover{
+    outline: none;
+}
+
+.register-fill::placeholder{
+
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.register-fill .register-fill::placeholder{
+
+    padding-top: 20px;
+}
+
+.button-field{
+
+    padding-top: 40px;
+}
+
+.register-button{
+
+    background-color: #fff;
+    border-radius: 40px;
+    font-size: 1.5rem;
+    padding: 2px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #FF4053;
+}

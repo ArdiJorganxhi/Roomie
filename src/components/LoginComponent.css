@@ -1,0 +1,111 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+    background-image: url('./images/login-register-background.png');
+    background-size: cover;
+    overflow: hidden;
+}
+
+.login{
+
+    padding: 70px;
+    align-items: flex-start;
+    padding-top: 220px;
+    
+}
+
+.login-field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.login-field input{
+
+    padding-top: 70px;
+}
+
+.login-username{
+
+    border: none;
+	border-bottom: 2px solid #fff;
+	background: none;
+	padding: 10px;
+	padding-left: 1px;
+	font-weight: 700;
+	width: 30%;
+	transition: .2s;
+}
+
+.login-username:active, .login-username:focus, .login-username:hover{
+    outline: none;
+}
+
+.login-username::placeholder{
+
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.login-username .login-username::placeholder{
+
+    padding-top: 20px;
+}
+
+
+.rememberMe-forgetPassword{
+
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding-top: 20px;
+}
+
+.remember-me{
+
+    padding-top: 250px;
+}
+
+.remText{
+
+   padding-left: 5px;
+    color: #fff;
+    font-size: 0.8rem;
+
+}
+
+.forgetText{
+
+    font-size: 0.8rem;
+    color: #fff;
+    text-decoration: none;
+    padding-left: 190px;
+    padding-bottom: 20px;
+}
+
+a:Link{
+    text-decoration: none;
+}
+
+.button-field{
+
+    padding-top: 40px;
+}
+
+.login-button{
+
+    background-color: #fff;
+    border-radius: 40px;
+    font-size: 1.5rem;
+    padding: 2px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #FF4053;
+}

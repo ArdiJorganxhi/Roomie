@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  NavLink
+  Link
 } from 'react-router-dom';
 import RegisterComponent from './RegisterComponent';
 
@@ -18,8 +18,8 @@ const LoginComponent = () => {
         <div className='login-field'>
 
 
-        <input type='text' className='login-username' placeholder='User Name'></input>
-        <input type='passsword' className='login-username' placeholder='Password'></input>
+        <input type='text' className='login-username text' placeholder='User Name'></input>
+        <input type='password' className='login-username text' placeholder='Password'></input>
 
 
         </div>
@@ -28,27 +28,37 @@ const LoginComponent = () => {
 
           <input type='checkbox' className='remember-me'></input>
           <p className='remText'>Remember Me</p>
-          <a href='/register'> <p className='forgetText'>Forget Password</p> </a>
+          <a href='#'> <p className='forgetText'>Forget Password</p> </a>
 
         </div>
         <div className='button-field'>
 
+        <Link to= '/homepage'>
 
         <button className='login-button'>Login</button>
 
+        </Link>
+   
+
 
         </div>
+
+        <div className='create-account-field'>
+
+
+        <a href='/register' className='create-account'>No account, create a new one!</a>
+
+
+        </div>
+
+       
       
        
       </form>
 
 
       
-      <Routes>
-        <Route path='/register'>
-          <RegisterComponent />
-        </Route>
-      </Routes>
+      
      
       
       

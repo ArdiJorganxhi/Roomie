@@ -109,3 +109,31 @@ a:Link{
     padding-right: 30px;
     color: #FF4053;
 }
+
+
+.text{
+    font-size: 1rem;
+    color: #fff;
+}
+
+
+.create-account{
+
+    font-size: 0.8rem;
+    color: #fff;
+    
+    
+}
+
+
+.create-account-field{
+
+
+    padding-top: 50px;
+}
+
+
+.create-account:link{
+
+    text-decoration: underline;
+}

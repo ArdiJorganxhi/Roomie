@@ -1,0 +1,23 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    
+    background-color: #fff;
+    
+}
+
+
+h1{
+    display: flex;
+    text-align: left;
+    padding-left: 70px;
+    color: #fff;
+    padding-top: 350px;
+
+}

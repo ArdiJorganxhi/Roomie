@@ -1,9 +1,10 @@
 import React from 'react'
 import './HomepageComponent.css'
+import Navbar from './Navbar'
 const HomepageComponent = () => {
   return (
     
-      <h1>Coming soon! Stay tuned.</h1>
+      <Navbar />
    
   )
 }

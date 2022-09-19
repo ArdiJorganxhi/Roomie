@@ -1,26 +1,41 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 
 import './LoginComponent.css';
+import useForm from './useForm';
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from 'react-router-dom';
-import RegisterComponent from './RegisterComponent';
 
-const LoginComponent = () => {
+
+
+
+import { Link } from 'react-router-dom';
+
+
+
+const LoginComponent = ({submitForm}) => {
+
+
+  const { handleChange, handleSubmit, handleLoginSubmit, handleGender, handleValidation, handleErrors, values, errors, isSubmitting } = useForm(
+    submitForm
+    
+  );
   return (
+
     <div className='login'>
 
-      <form className='loginForm'>
+      
+ 
+      <form className='loginForm' onSubmit={handleLoginSubmit} onClick={handleErrors} noValidate>
         <div className='login-field'>
 
 
-        <input type='text' className='login-username text' placeholder='User Name'></input>
-        <input type='password' className='login-username text' placeholder='Password'></input>
-
+        <input type='email' value={values.email} onChange={handleChange} className='login-username text' name='email' placeholder='User Name' />
+        <div className='error'>
+        {errors.email && <p className='error-line'>{errors.email}</p>}
+        </div>
+        <input type='password' value={values.password} onChange={handleChange} className='login-username text' name='password' placeholder='Password' />
+        <div className='error'>
+        {errors.password && <p className='error-line'>{errors.password}</p>}
+        </div>
 
         </div>
 
@@ -33,11 +48,17 @@ const LoginComponent = () => {
         </div>
         <div className='button-field'>
 
-        <Link to= '/homepage'>
+       
+        <Link to='/profile'>
 
-        <button className='login-button'>Login</button>
+
+        <button className='login-button' type='submit' onClick={handleValidation}>Login</button>
+
 
         </Link>
+        
+
+       
    
 
 
@@ -45,8 +66,8 @@ const LoginComponent = () => {
 
         <div className='create-account-field'>
 
-
-        <a href='/register' className='create-account'>No account, create a new one!</a>
+       
+       
 
 
         </div>

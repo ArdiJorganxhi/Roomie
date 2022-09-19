@@ -5,11 +5,12 @@
     box-sizing: border-box;
 }
 
-body{
+.login{
 
     background-image: url('./images/login-register-background.png');
     background-size: cover;
     overflow: hidden;
+    height: 100vh;
 }
 
 .login{
@@ -136,4 +137,19 @@ a:Link{
 .create-account:link{
 
     text-decoration: underline;
+}
+
+
+.error{
+    padding-top: 20px;
+}
+
+.error-line{
+    color: #FF4053;
+    background-color: #fff;
+    width: 20%;
+    font-size: 0.6rem;
+    padding: 5px;
+    border-radius: 15px;
+
 }

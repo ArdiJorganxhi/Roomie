@@ -5,16 +5,19 @@
     box-sizing: border-box;
 }
 
-body{
+.register{
 
-    background-image: url('./images/login-register-background.png');
+    background: url('./images/login-register-background.png');
     background-size: cover;
     overflow: hidden;
+    height: 100vh;
+    
 }
 
 .register{
 
-    padding: 70px;
+    padding-left: 70px;
+    padding-top: 35px;
     
 
 }
@@ -74,3 +77,23 @@ body{
     padding-right: 30px;
     color: #FF4053;
 }
+
+.username-error-line, .name-error-line, .surname-error-line, .password-error-line, .password-again-error-line{
+    visibility: hidden;
+}
+
+.error{
+    padding-top: 20px;
+}
+
+.error-line{
+    color: #FF4053;
+    background-color: #fff;
+    width: 20%;
+    font-size: 0.6rem;
+    padding: 5px;
+    border-radius: 15px;
+
+}
+
+

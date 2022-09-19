@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root{
+    --mainColor: #fff;
+
+}
+
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 5rem;
+    background-color: var(--mainColor);
+    color: #000;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
+
+.navbar a{
+    margin: 0 2.5rem;
+    text-decoration: none;
+    color: #000;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+
+header .create-ad{
+     border-radius: 50px;
+    outline: none;
+    color: #fff;
+    font-size: 0.9rem;
+   border: 0;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    background-color: #FF4053;
+
+}
+
+header .logo{
+
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    justify-content: space-around;
+    color: #FF4053;
+}
+
+.profile-field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+
+header .profile-photo{
+    width: 20%;
+    align-items: center;
+    justify-content: space;
+
+}

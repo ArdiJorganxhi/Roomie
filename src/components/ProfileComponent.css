@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+   
+    
+}
+
+.profile-image-container{
+    background-color: #FF294F;
+    padding-right: 350px;
+    padding-left: 350px;
+    border-radius: 0px 0px 25px 25px;
+    height: 120px;
+}
+
+
+.profile-image{
+  padding-top: 50px;
+ 
+  width: 100px;
+}
+
+.name-surname{
+    padding: 20px;
+}
+
+.profile-details-container{
+
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    padding-top: 200px;
+}
+
+.profile-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    
+}
+
+.profile-details-container h3 + p{
+    margin-left: 20px;
+}
+
+.profile-password{
+    -webkit-text-security:disc;
+}
+
+.update-button-container{
+    padding-top: 50px;
+}
+
+
+.advert-button-container{
+
+    padding-top: 50px;
+}
+
+.update-button{
+    border: 0;
+    background-color: #FF4053;
+    border-radius: 40px;
+    font-size: 1.5rem;
+    padding: 2px;
+    padding-left: 80px;
+    padding-right: 80px;
+    color: #fff
+}
+
+.advert-button{
+    border: 0;
+    background-color: #FF4053;
+    border-radius: 40px;
+    font-size: 1.5rem;
+    padding: 2px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #fff;
+}
+

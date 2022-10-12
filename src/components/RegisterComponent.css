@@ -10,7 +10,8 @@
     background: url('./images/login-register-background.png');
     background-size: cover;
     overflow: hidden;
-    height: 100vh;
+    height: 115vh;
+    
     
 }
 
@@ -27,11 +28,14 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
+    
 }
 
 .register-field input{
 
-    padding-top: 50px;
+    padding-top: 20px;
+    overflow: hidden;
 }
 
 .register-fill{
@@ -50,6 +54,11 @@
     outline: none;
 }
 
+.regForm{
+
+    height: 100vh;
+}
+
 .register-fill::placeholder{
 
     color: #fff;
@@ -64,10 +73,10 @@
 
 .button-field{
 
-    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.register-button{
+.buttonOfRegister{
 
     background-color: #fff;
     border-radius: 40px;
@@ -76,6 +85,7 @@
     padding-left: 30px;
     padding-right: 30px;
     color: #FF4053;
+    overflow: hidden;
 }
 
 .username-error-line, .name-error-line, .surname-error-line, .password-error-line, .password-again-error-line{

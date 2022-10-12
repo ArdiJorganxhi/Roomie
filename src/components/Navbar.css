@@ -64,9 +64,89 @@ header .logo{
     
 }
 
-header .profile-photo{
-    width: 20%;
-    align-items: center;
-    justify-content: space;
+
+.menuTrigger .profile-photo{
+  
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    right: 30px;
+    border-radius: 50%;
+    justify-content: space-between;
+    cursor: pointer;
 
 }
+
+.dropdownMenu{
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px 10px;
+    width: 200px;
+    box-shadow: 0 10px 10px 5px rgba(0,0,0,.2);
+    border-radius: 30px;
+    z-index: 2;
+}
+
+
+
+.dropdownMenu::before{
+    content: '';
+    position: absolute;
+    top: -25px;
+    right: 20px;
+    height: 10px;
+    width: 10px;
+    background: #000;
+    transform: rotate(45deg);
+}
+
+
+.dropdownMenu ul li{
+    padding: 10px 0;
+   
+}
+
+.dropdownMenu li:hover{
+    background-color: #e1e1e1;
+}
+
+.dropdownMenu ul li:hover a{
+    cursor: pointer;
+    
+}
+
+.dropdownMenu ul li:hover img{
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+.dropdownItem{
+    display: flex;
+    margin: 10px auto;
+}
+
+.dropdownItem img{
+    max-width: 20px;
+    
+    opacity: 0.5;
+
+
+}
+
+.dropdownMenu.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    
+  }
+  
+  .dropdownMenu.inactive{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    
+  }

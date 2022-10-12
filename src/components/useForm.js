@@ -1,11 +1,17 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { baseUrl } from '../API/baseUrl';
+
+
+
 
 
 const useForm = () => {
 
+  
 
+ 
 
     const [values, setValues] = useState({
       username: '',
@@ -16,10 +22,61 @@ const useForm = () => {
       password: ''
     
     });
+
+
+    const [advertValues, setAdvertValues] = useState({
+      id: -1,
+      title: '',
+      city: '',
+      district: '',
+      neighbourhood: '',
+      rooms: '',
+      price: 0,
+      floorArea: '',
+      content: ''
+    });
+
+
+    const [advertValuesExample, setAdvertValuesExample] = useState({
+      title: '',
+      city: '',
+      district: '',
+      neighbourhood: '',
+      rooms: '',
+      price: 0,
+      floorArea: '',
+      content: ''
+
+    })
+
+
+    
+
+    const [advertValuesArray, setAdvertValuesArray] = useState([])
   
 
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    
+    const  handleAdvertValuesChange = e => {
+    
+      
+        setAdvertValuesExample({
+          ...advertValuesExample,
+          [e.target.name]: e.target.value
+        })
+     }
+
+
+    const confirmChanges = e => {
+      
+     e.preventDefault();
+     setAdvertValuesExample(advertValuesExample)
+
+        
+    }
+ 
   
     const handleChange = e => {
       const { name, value } = e.target;
@@ -29,6 +86,17 @@ const useForm = () => {
       });
       
     };
+
+
+    const handleAdvertChange = e => {
+   
+      setAdvertValues({
+        ...advertValues,
+        [e.target.name]: e.target.value
+       
+      })
+      console.log(e.target.value)
+    }
 
     const handleGender = e => {
       values.gender = e.target.value
@@ -78,7 +146,7 @@ const useForm = () => {
       
 
 
-      axios.post('https://490b-94-121-173-56.eu.ngrok.io/api/Account/register', values).then(
+      axios.post(baseUrl + '/api/Account/register', values).then(
 
         res => {
           console.log(res)
@@ -99,11 +167,14 @@ const useForm = () => {
       e.preventDefault();
       setIsSubmitting(true);
 
-      axios.post('https://490b-94-121-173-56.eu.ngrok.io/api/Account/login', values).then(
+      axios.post(baseUrl + '/api/Account/login', values).then(
         res => {
           console.log(res)
-          const users = res.data
-          localStorage.setItem('user', JSON.stringify(values));
+
+         localStorage.setItem("token", res.data.token);
+         localStorage.setItem("name", res.data.username)
+         localStorage.setItem("email", res.data.email);
+         localStorage.setItem("gender", res.data.gender);
 
         }
       ).catch(
@@ -112,6 +183,35 @@ const useForm = () => {
         }
       )
     }
+
+    const handleAdvertSubmit = e => {
+      e.preventDefault();
+
+      let token = localStorage.getItem("token")
+      console.log(token)
+     
+
+      
+
+      axios.post(baseUrl + '/api/Advert',advertValues, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+ token
+        },      
+    })      
+    .then((response) => {
+      console.log('response',response.data)
+
+    })
+    .catch((error) => {
+      console.log(error)
+
+    }
+
+    )
+     
+    }
+
   
     useEffect(
       () => {
@@ -122,7 +222,7 @@ const useForm = () => {
       [errors]
     );
   
-    return { handleChange, handleSubmit, handleGender, handleLoginSubmit, handleErrors, values, errors, isSubmitting };
+    return { handleChange, handleSubmit, handleGender, handleLoginSubmit, handleErrors, values, errors, isSubmitting, handleAdvertChange, handleAdvertSubmit, advertValues, advertValuesExample, handleAdvertValuesChange, confirmChanges };
   };
   
   export default useForm;

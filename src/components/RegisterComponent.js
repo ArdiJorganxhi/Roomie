@@ -10,6 +10,8 @@ import useForm from './useForm';
 import validate from './validateInfo'
 import Helmet from 'react-helmet'
 
+import Background from '../images/login-register-background.png'
+
 
 
 
@@ -39,9 +41,10 @@ const RegisterComponent = ({submitForm}) => {
 
   return (
     
+  
     <div className='register'>
     
-      <form className='registerForm' onSubmit={handleSubmit} onClick={handleErrors} noValidate>
+      <form className='regForm' onSubmit={handleSubmit} onClick={handleErrors} noValidate>
         <div className='register-field'>
 
         
@@ -91,7 +94,7 @@ const RegisterComponent = ({submitForm}) => {
         
 
           
-        <button className='register-button' type='submit' onClick={handleValidation}>Register</button>
+        <button className='buttonOfRegister' type='submit' onClick={handleValidation}>Register</button>
 
         
 

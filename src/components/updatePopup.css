@@ -4,21 +4,24 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
     
 }
 
 .popup-inner{
     position: relative;
     padding: 32px;
-    width: 100%;
-    max-width: 640px;
+    width: 70%;
+
+    height: auto;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 .popup-inner .close{
@@ -27,7 +30,7 @@
     right: 16px;
 }
 
-.update-form{
+.updateForm{
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -37,48 +40,227 @@
 
 
 
-.update-fill{
+.updateFill{
     border: 0;
     border-radius: 20px;
     background-color: #e1e1e1;
     padding: 10px;
-	padding-left: 1px;
+	
 	font-weight: 700;
-	width: 90%;
+	width: 95%;
 	transition: .2s;
     margin-bottom: 15px;
     opacity: 0.8;
 }
 
-.update-fill::placeholder{
+.updateFill::placeholder{
     color: #ff4053;
     padding: 10px;
 }
 
-.update-fill .update-fill::placeholder{
+.updateFill .updateFill::placeholder{
 
     padding-top: 20px;
 }
 
-.update-button-field{
+.updateButtonField{
     display: flex;
     padding-top: 20px;
     align-items: center;
     justify-content: center;
     text-align: center; 
-    transform: translateX(40%);   
+    transform: translateX(45%);   
 }
 
-.update-popup-button{
+.updatePopupButton{
     border: 0;
     background-color: #FF4053;
     border-radius: 40px;
     font-size: 1.5rem;
     text-align: center;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 65px;
+    padding-right: 65px;
     margin: auto;
     color: #fff;
 }
+
+
+.cancelPopupButton{
+
+    border: 1px solid #ff4053;
+    background-color: #FFF;
+    border-radius: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-left: 65px;
+    padding-right: 65px;
+    margin: auto;
+    color: #FF4053;
+
+
+}
+
+
+
+
+
+
+.advertFill{
+
+    border-color: black;
+    border-radius: 20px;
+    border-width: thin;
+    padding: 10px;
+	padding-left: 1px;
+	font-weight: 700;
+	width: 100%;
+	transition: .2s;
+    margin-bottom: 10px;
+    opacity: 0.8;
+
+}
+
+.advertFill::placeholder{
+    color: #ff4053;
+    padding: 10px;
+    opacity: 0.5;
+}
+
+
+.advertDescription{
+    border: 0;
+    padding-right: 725px;
+    padding-bottom: 100px;
+    padding-top: 20px;
+    padding-left: 20px;
+    border-radius: 20px;
+    
+    background-color: #e1e1e1;
+
+}
+
+
+
+.advertDescription::placeholder{
+  
+    color: #ff4053;
+}
+
+
+.image{
+    border: 0;
+    padding-left: 50px;
+    background-color: rgb(245,188,191);
+    padding: 70px;
+    text-align: center;
+    justify-content: center;
+    width: 55%;
+    border-radius: 50px;
+}
+
+
+.short-image{
+    border: 0;
+    padding-left: 20px;
+    background-color: rgb(245,188,191);
+    padding: 60px;
+    
+    text-align: center;
+    width: 25%;
+    justify-content: space-between;
+    margin: 12px;
+
+}
+
+
+.images{
+    justify-content: space-between;
+}
+
+
+.buttonOfAdvertCreate{
+    border: 0;
+    background-color: #FF4053;
+    border-radius: 40px;
+    font-size: 1.5rem;
+    padding: 2px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #FFF;
+    overflow: hidden;
+}
+
+
+.emptyImageSquare{
+
+    padding: 50px 30px 50px 30px;
+    background-color:rgb(245,188,191) ;
+    text-align: center;
+    border-radius: 50px;
+    color: #ff4053;
+}
+
+
+
+
+.emptyShortImageSquare{
+    
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    height: auto;
+    margin-top: 15px;
+    background-color:rgb(245,188,191) ;
+    text-align: center;
+    border-radius: 30px;
+    color: #ff4053;
+
+
+}
+
+
+.advertUpdateButtonField{
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    transform: translateX(37%);
+}
+
+.advertUpdateButton{
+    border: 0;
+    background-color: #ff4053;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 70px;
+    padding-right: 70px;
+    border-radius: 20px;
+    color: #fff;
+    margin: 5px;
+
+}
+
+
+.cancelUpdateButton{
+
+    border: 1px solid #ff4053;
+    background-color: #FFF;
+    border-radius: 20px;
+
+
+    padding-left: 70px;
+    padding-right: 70px;
+   
+    color: #FF4053;
+}
+
+
+
+
+
+
+
+
 
 

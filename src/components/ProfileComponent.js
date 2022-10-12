@@ -1,18 +1,19 @@
 import './ProfileComponent.css'
 import React, { useState } from 'react'
-import Navbar from './Navbar'
+import Navbar from './NavbarComponent'
 import profile from '../images/profile-example.png'
 import Popup from './Popup'
+
+import {Link} from 'react-router-dom'
 import useForm from './useForm'
 
 
 const ProfileComponent = () => {
-
-    const { handleChange, handleSubmit, handleGender, handleErrors, values, errors, isSubmitting } = useForm(
+  const { handleChange, values } = useForm(
+   
         
-        
-      );
-    const [buttonPopup, setButtonPopup] = useState(false);
+    );
+    const [updateButtonPopup, setUpdateButtonPopup] = useState(false);
   return (
     <>
      <Navbar /> 
@@ -33,7 +34,7 @@ const ProfileComponent = () => {
         <div className='profile-wrapper'>
 
         <h3>Username: </h3>
-        <p>ardijorganxhi</p>
+        <p>{localStorage.getItem("name")}</p>
 
 
         </div>
@@ -69,25 +70,26 @@ const ProfileComponent = () => {
         
         <div className='update-button-container'>
 
-            <button className='update-button' onClick={() => setButtonPopup(true)}>Bilgilerimi Güncelle</button>
+            <button className='update-button' onClick={() => setUpdateButtonPopup(true)}>Bilgilerimi Güncelle</button>
 
         </div>
 
-        <Popup trigger={buttonPopup}>
-            <div className='update-form-container'>
+        <Popup trigger={updateButtonPopup}>
+            <div className='updateFormContainer'>
 
             
-           <form className='update-form'>
+           <form className='updateForm'>
             
-            <input type='text' className='update-fill' placeholder='Username' />
-            <input type='email' className='update-fill' placeholder='Email Address' />
-            <input type='text' className='update-fill' placeholder='Name' />
-            <input type='text' className='update-fill' placeholder='Gender' />
-            <input type='text' className='update-fill' placeholder='Surname' />
-            <input type='password' className='update-fill' placeholder='Password' />
+            <input type='text' className='updateFill' placeholder='Username' />
+            <input type='email' className='updateFill' placeholder='Email Address' />
+            <input type='text' className='updateFill' placeholder='Name' />
+            <input type='text' className='updateFill' placeholder='Gender' />
+            <input type='text' className='updateFill' placeholder='Surname' />
+            <input type='password' className='updateFill' placeholder='Password' />
 
-           <div className='update-button-field'>
-            <button className='update-popup-button'>Güncelle</button>
+           <div className='updateButtonField'>
+            <button className='updatePopupButton'>Güncelle</button>
+            <button className='cancelPopupButton'>Iptal et</button>
             </div>
            </form>
 
@@ -95,12 +97,18 @@ const ProfileComponent = () => {
 
         </Popup>
 
+
+        <Link to = '/myAdvert'>
            
         <div className='advert-button-container'>
 
             <button className='advert-button'>Yayınladıgın ilanlara göz at</button>
 
         </div>
+
+        </Link>
+
+        
 
 
      </div>

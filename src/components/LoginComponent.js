@@ -24,7 +24,7 @@ const LoginComponent = ({submitForm}) => {
 
       
  
-      <form className='loginForm' onSubmit={handleLoginSubmit} onClick={handleErrors} noValidate>
+      <form className='loginForm' onSubmit={handleLoginSubmit} onClick={handleLoginSubmit} noValidate>
         <div className='login-field'>
 
 

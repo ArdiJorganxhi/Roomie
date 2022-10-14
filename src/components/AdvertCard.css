@@ -441,11 +441,14 @@
 
     display: flex;
     flex-direction: row;
+    float: left;
+    width: 50%;
   }
 
   .updateAdvertImageContainer img{
 
-    width: 250px;
+    width: 300px;
+    margin-top: 25px;
   }
 
   .updateAdvertImageContainer img + img{
@@ -458,7 +461,8 @@
 
     border-left: 0.8px solid #000;
     height: 450px;
-    margin-left: 55px;
+    margin-left: 90px;
+    margin-top: 10px;
   }
 
 
@@ -467,15 +471,18 @@
 
     display: grid;
     grid-template-columns: 1fr;
-    padding-left: 20px;
+    
+    float: right;
+    width: 50%;
+   
     
   }
 
 
   .updateAdvertInformations input{
-
+    margin-right: 120px;
     padding-top: 20px;
-    width: 70%;
+    width: 80%;
     border: 0;
     border: none;
     border-bottom: 1px solid #000;
@@ -492,7 +499,8 @@
   .updateConfirmButtonContainer{
 
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    padding-top: 40px;
   }
 
   .updateConfirmButton{
@@ -513,6 +521,32 @@
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+
+  .closeButtonContainer{
+    position: relative;
+  }
+
+
+  .updateCloseButton{
+
+    position: absolute;
+    top: -30px;
+    right: 0;
+    font-size: 3rem;
+    cursor: pointer;
+    color: #000;
+  }
+
+  .updateCloseButton::after{
+
+    content: "\d7";
+    font-size: 3rem;
+    font-weight: lighter;
+    
+    cursor: pointer;
+
   }
 
   

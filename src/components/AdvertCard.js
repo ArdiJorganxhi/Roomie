@@ -15,13 +15,16 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import ProfilePhoto from '../images/profile-example.png'
 import { faGear } from '@fortawesome/sharp-solid-svg-icons'
 import DropdownItem from 'react-bootstrap/esm/DropdownItem'
-import { Dropdown } from 'react-bootstrap'
+import { Alert, Dropdown } from 'react-bootstrap'
 import { faBookmark } from '@fortawesome/sharp-solid-svg-icons'
 import { faPencil } from '@fortawesome/sharp-solid-svg-icons'
 import { faX } from '@fortawesome/sharp-solid-svg-icons'
 import useForm from './useForm'
 import axios from 'axios'
 import { baseUrl } from '../API/baseUrl'
+
+import AlertPopup from './AlertPopup'
+
 
 
 
@@ -38,6 +41,12 @@ const AdvertCard = (props) => {
 
       </li>
     );
+  }
+
+  function popupSuccess(){
+
+
+    
   }
 
   const [tempAdvertValues, setTempAdvertValues] = useState({
@@ -66,6 +75,9 @@ const AdvertCard = (props) => {
   const [advertPopup ,setAdvertPopup] = useState(false);
   const [open, setOpen] = useState(false);
   const [updateAdvertPopup, setUpdateAdvertPopup] = useState(false);
+
+  const [sucPostedAdvertPopup, setSucPostedAdvertPopup] = useState(false);
+
 
   
   const updateAdvertSubmit = e => {
@@ -111,7 +123,7 @@ const AdvertCard = (props) => {
 
   axios.get(baseUrl + '/api/Advert/1').then(
     res => {
-      console.log(res);
+      console.log(res.body);
     }
   ).catch(
     err => {
@@ -133,7 +145,7 @@ const AdvertCard = (props) => {
 
       <div className={`advertSettings ${open? 'active' : 'inactive'}`}>
         <div className='optionItems'>
-        <Dropdown.Item onClick={() => alert('Your advert has been saved successfully!')}>
+        <Dropdown.Item onClick={() => setSucPostedAdvertPopup(true)}>
           <div className='optionItem'>
             <FontAwesomeIcon icon={faBookmark} className='settingIcon' />
             <p>Save</p>
@@ -259,7 +271,10 @@ const AdvertCard = (props) => {
       <form className='updateAdvertForm'>
      <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div className='closeButtonContainer'>
+      <div className='updateCloseButton' onClick={() => setUpdateAdvertPopup(false)}></div>
+    </div>
+    
       <div className='updateAdvertLeftContainer'>
 
       <div className='updateAdvertImageContainer'>
@@ -270,9 +285,9 @@ const AdvertCard = (props) => {
 
       </div>
      
-    </div>
+ 
    
-    <div class="col-sm-8">
+
       <div className='updateAdvertInformations'>
       <input type='text' placeholder='Title' name='title' value={tempAdvertValues.advertId} onChange={handleTempAdvertValues} required />
       <input type='text' placeholder='Title' name='title' value={tempAdvertValues.title} onChange={handleTempAdvertValues} required />
@@ -286,20 +301,26 @@ const AdvertCard = (props) => {
 
       </div>
 
-    </div>
 
-    <div className='row'>
-      <div className='col-sm-12'>
+
+  
         <div className='updateConfirmButtonContainer'>
         <button className='updateConfirmButton' onClick={updateAdvertSubmit}>Update</button>
         </div>
        
-      </div>
-    </div>
+    
    
   </div>
 </div>
 </form>
+     </Popup>
+
+
+
+     <Popup trigger={sucPostedAdvertPopup}>
+
+      <AlertPopup />
+      
      </Popup>
     </div>
 

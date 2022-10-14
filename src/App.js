@@ -10,6 +10,8 @@ import Profile from './pages/Profile'
 import MyAdvert from './pages/MyAdvert';
 import AdvertCard from './components/AdvertCard';
 import GeneralAdverts from './pages/GeneralAdverts';
+import AlertPopup from './components/AlertPopup.js';
+
 
 
 

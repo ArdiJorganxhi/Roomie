@@ -24,7 +24,7 @@ function App() {
     
     <Routes> 
 
-   <Route path='/' element={<AdvertCard />}></Route>
+   <Route path='/' element={<MyAdvert />}></Route>
    <Route exact path ='/login' element={<Login />}></Route>
    <Route path='/register' element={<Register />}></Route>
    <Route path = '/homepage' element={<Homepage />}></Route>

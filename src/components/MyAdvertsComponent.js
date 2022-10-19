@@ -16,6 +16,8 @@ import useForm from './useForm'
 import ExampleJSON from '../example.json'
 import { baseUrl } from '../API/baseUrl'
 import { BottomScrollListener, useBottomScrollListener } from 'react-bottom-scroll-listener'
+import getMap from '../utilities/GetMap'
+
 
 
 
@@ -23,7 +25,35 @@ import { BottomScrollListener, useBottomScrollListener } from 'react-bottom-scro
 
 const MyAdvertsComponent = () => {
 
+
+    const data =  require('../assets/data.json')
+    const result = data;
+
+    var cities = []
+    var districts = []
+    var neighbourhoods = []
+
+    var functionCount = 0;
+    var neighbourhoodCount = 0;
+
+    
+      result.forEach(element => {
+        
+        if(functionCount == 0){
+          cities.push(' ')
+        }
+       cities.push(element.name)
+       functionCount++;
+        
+     });
+
+
      
+  
+
+   
+    
+   
     const [advertArray, setAdvertArray] = useState([])
 
     const {advertValuesExample, handleAdvertValuesChange, advertTitle } = useForm();
@@ -32,49 +62,36 @@ const MyAdvertsComponent = () => {
 
     const [pageNumber, setPageNumber] = useState(1);
 
+    const [city, setCity] = useState('');
+    
+    const [district, setDistrict] = useState('');
+
+    const [neighbourhood, setNeighbourhood] = useState('');
+
+    const [selectedCityIndex, setSelectedCityIndex] = useState(1);
+
+    const [selectedDistrictIndex, setSelectedDistrictIndex] = useState(1);
+    
+
     let count = pageNumber
     
     
    
     const handleOnDocumentBottom = () => {
+      
       setPageNumber(count++)
-      console.log(pageNumber)
+      
     };
 
-     
+     var cityIndex = 0;
+     let districtCount = 0;
 
       const ref = useRef();
-    const [filterValues, setFilterValues] = useState({
-      city: "",
-      district:"",
-      neighbourhood:"",
-      rooms : "",
-      minPrice: null,
-      maxPrice: null,
-      minFloorArea:null,
-      maxFloorArea:null,
-      Page: pageNumber,
-      PageSize: 12,
-      orderByWith : "Price ASC",
-      applicationUserId: 2
-    })
+   
 
  
    
 
-    function postFilter(){
-      
-      axios.post(baseUrl + '/api/Advert/filter', filterValues).then(
-        res => {
-          console.log(res)
-          setAdvertArray(res.data)
-        }
-      ).catch(
-        err => {
-          console.log(err)
-        }
-      )  
-    }
 
  
     useEffect(() => {
@@ -94,12 +111,16 @@ const MyAdvertsComponent = () => {
         "applicationUserId": 2
       }
 
-      axios.post(baseUrl + '/api/Advert/filter', values).then(
+      axios.post(baseUrl + '/api/Advert/filter', values, {
+        headers: {
+          'Access-Control-Allow-Origin' : '*',
+        }
+      }).then(
         res => {
           let array1 = advertArray
           let array2 = res.data;
           setAdvertArray(array1.concat(array2))
-          console.log(advertArray)
+     
           
         }
       ).catch(
@@ -107,12 +128,23 @@ const MyAdvertsComponent = () => {
           console.log(err)
         }
       )
-  
-    }, [pageNumber])
+
+      console.log(city)
+      console.log(selectedCityIndex)
+      
+
+
+      
+    
+        
+    }, [city, district])
 
 
    
 
+    
+  
+    
 
     
 
@@ -143,24 +175,99 @@ const MyAdvertsComponent = () => {
     <div className='filterSection myAdvertPage'>
 
 
-<DropdownButton id="dropdown-basic-button" title="İl">
-<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+<DropdownButton id="dropdown-basic-button" title={city}>
+  <div className='dropdownHeight'>
+
+  {
+   cities.map((element, index) => {
+    
+    return(
+      <Dropdown.Item className='dropdownItem' onClick={() => {setCity(element); setSelectedCityIndex(index); cityIndex = selectedCityIndex}}>
+        {element}
+      </Dropdown.Item>
+    )
+
+    
+
+    
+  })
+
+  
+}
+</div>
+
+
 </DropdownButton>
 
 
-<DropdownButton id="dropdown-basic-button" title="İlçe">
-<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+<DropdownButton id="dropdown-basic-button" title={district}>
+
+ {
+   
+
+    data[selectedCityIndex - 1].towns.forEach(element => {
+
+      
+      districts.push(element.name);
+      districtCount++;
+      
+    })
+ }
+
+
+
+
+<div className='dropdownHeight'>
+
+
+
+ {
+  districts.map((element, index) => {
+    return(
+      <Dropdown.Item onClick={() => {setSelectedDistrictIndex(index); setDistrict(element)}}>{element}</Dropdown.Item>
+    )
+  })
+ }
+
+</div>
+
+
+
 </DropdownButton>
 
 
 <DropdownButton id="dropdown-basic-button" title="Mahalle">
-<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+
+  {
+    data[selectedCityIndex - 1].towns[selectedDistrictIndex].districts.forEach(element => {
+
+      element.quarters.forEach(element1 => {
+
+        if(neighbourhoodCount == 0){
+
+          neighbourhoods.push(' ')
+        }
+
+        neighbourhoods.push(element1.name);
+        neighbourhoodCount++;
+
+      })
+    })
+  }
+
+<div className='dropdownHeight'>
+
+
+  {
+    neighbourhoods.map((element, index) => {
+
+      return(
+        <Dropdown.Item>{element}</Dropdown.Item>
+      )
+    })
+  }
+  </div>
+
 </DropdownButton>
 
 
@@ -194,7 +301,7 @@ const MyAdvertsComponent = () => {
 
     
       
-    <ul className='cards' onChange={handleAdvertValuesChange}>
+    <ul className='cards' onChange={handleAdvertValuesChange} onScroll={handleOnDocumentBottom}>
   
      
       

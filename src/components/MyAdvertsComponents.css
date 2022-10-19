@@ -1,7 +1,7 @@
 
 
-.headerContainer{
-
+body{
+  background-color: #e1e1e1;
 }
 
 .reviewAdvertHeader{
@@ -72,12 +72,12 @@
 #dropdown-basic-button{
   background-color: rgb(224,224,224);
   color: rgb(224,224,224);
+  
 }
 
 .myAdvertsComponentContainer{
   background-color: rgb(224,224,224);
 }
-
 
 
 
@@ -136,6 +136,14 @@
 
 .secondColumn{
   padding-left: 150px;
+}
+
+
+.dropdownHeight{
+
+  height: 250px;
+  overflow-y: auto;
+
 }
 
   

@@ -13,7 +13,8 @@
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 3rem;
-    margin: 4rem 5vw;
+    margin-left: 70px;
+    margin-top: 150px;
     padding: 0;
     list-style-type: none;
   }

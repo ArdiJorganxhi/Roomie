@@ -1,15 +1,3 @@
-# Finding a roommate ain't a problem no more!
-
-Roomie aims to help students in Turkey to find their roommates all around in Turkey. It is a web and mobile project in development. This repository contains the front-end of website.
-
-
-
-
-
-
-
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

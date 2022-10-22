@@ -4,41 +4,8 @@ body{
   background-color: #e1e1e1;
 }
 
-.reviewAdvertHeader{
-    position: absolute;
-    background-image: linear-gradient(to right, #FD7D5A, #FF294F);
-    padding-top: 50px;
-    padding-left: 350px;
-    overflow: visible;
-    width: 100%;
-    
-}
 
 
-.reviewAdsHeader{
-
-  background-image: linear-gradient(to right, #FD7D5A, #FF294F);
-  padding-top: 70px;
-}
-
-.reviewAds{
-
-  color: #fff;
-  position: absolute;
-  left: 25%;
-  margin-bottom: 30px;
-  font-size: 1.7rem;
- 
-}
-
-
-.reviewAdvertHeader h3{
-
-    font-size: 1.7rem;
-    color: #fff;
-    
-    
-}
 
 .myAdsContainer{
 
@@ -64,20 +31,33 @@ body{
 
 .myAdvertPage{
 
-  margin-top: 50px;
-  margin-right: 10px;
+  margin-top: 150px;
+  width: 20%;
  
+  
+
+ 
+ 
+}
+
+.pageContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: inherit;
 }
 
 #dropdown-basic-button{
   background-color: rgb(224,224,224);
   color: rgb(224,224,224);
   
+  
 }
 
 .myAdvertsComponentContainer{
   background-color: rgb(224,224,224);
+
 }
+
 
 
 
@@ -146,6 +126,126 @@ body{
 
 }
 
+
+
+
+.horizontalLine{
+
+  border-bottom: 1px solid #000;
+}
+
+
+.reviewAdsContainer{
+  display: flex;
+  flex-direction: row;
+  
+  
+  
+}
+
+.reviewAds{
+
+  position: absolute;
+  top: 150px;
+  left: 350px;
+}
+
+
+.reviewAdsLine{
+  border-bottom: 1px solid #000;
+  width: 1000px;
+
+  
+}
+
+
+.sortContainer{
+
+  position: absolute;
+  top: 160px;
+  right: 150px;
+
+}
+
+.sort{
+  border: 1px solid #ff0453;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: #ff4053;
+  background-color: #e1e1e1;
+  border-radius: 30px;
+}
+
+
+
+
+.sortDropdownMenu{
+  position: absolute;
+  top: 190px;
+  right: 140px;
+  background-color: #fff;
+  padding: 10px 10px;
+  width: 200px;
+  box-shadow: 0 10px 10px 5px rgba(0,0,0,.2);
+  border-radius: 30px;
+  z-index: 2;
+}
+
+
+
+
+
+
+.sortDropdownMenu ul li{
+  padding: 10px 0;
+ 
+}
+
+.sortDropdownMenu li:hover{
+  background-color: #e1e1e1;
+}
+
+.sortDropdownMenu ul li:hover a{
+  cursor: pointer;
+  
+}
+
+.sortDropdownMenu ul li:hover img{
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+.sortDropdownItem{
+  display: flex;
+  margin: 1px auto;
+  font-size: 1rem;
+  color: #FF4053;
+}
+
+
+
+.sortDropdownMenu.active{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  
+}
+
+.sortDropdownMenu.inactive{
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  
+}
+
+
+.mainBody{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
   
 
  

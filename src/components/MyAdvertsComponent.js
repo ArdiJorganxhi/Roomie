@@ -23,6 +23,7 @@ import getMap from '../utilities/GetMap'
 
 
 
+
 const MyAdvertsComponent = () => {
 
 
@@ -35,6 +36,17 @@ const MyAdvertsComponent = () => {
 
     var functionCount = 0;
     var neighbourhoodCount = 0;
+
+    function SortDropdown(props){
+
+      return(
+        <li className='sortDropdownItem'>
+          {props.text}
+          
+        </li>
+        
+      )
+    }
 
     
       result.forEach(element => {
@@ -71,9 +83,15 @@ const MyAdvertsComponent = () => {
     const [selectedCityIndex, setSelectedCityIndex] = useState(1);
 
     const [selectedDistrictIndex, setSelectedDistrictIndex] = useState(1);
+
+    const [openDropdown, setOpenDropdown] = useState(false);
+    
+    let sortValue = 'Date ASC'
     
 
     let count = pageNumber
+
+    
     
     
    
@@ -129,15 +147,14 @@ const MyAdvertsComponent = () => {
         }
       )
 
-      console.log(city)
-      console.log(selectedCityIndex)
+      console.log('Bottom')
       
 
 
       
     
         
-    }, [city, district])
+    }, [city, district, sortValue, alertOnBottom])
 
 
    
@@ -152,30 +169,24 @@ const MyAdvertsComponent = () => {
 
     
   return (
-    <div className='myAdvertsComponentContainer'>
+    <div className='myAdvertsComponentContainer' onScroll={handleOnDocumentBottom}>
       
       <Navbar />
 
-        <header className='reviewAdsHeader'>
+      
 
 
-          
 
-        <div className='myAdsContainer'>
-            <h3>My ads</h3>
-          </div>
-          <h3 className='reviewAds'>Ilanları incele</h3>
+        <div className='pageContainer'>
 
-        </header>
+        
 
-
-        <div className="container">
-  <div className="row">
-    <div className="col-sm-4 firstColumn">
+   
+  
     <div className='filterSection myAdvertPage'>
 
-
-<DropdownButton id="dropdown-basic-button" title={city}>
+<aside>
+<DropdownButton id="dropdown-basic-button" title='City'>
   <div className='dropdownHeight'>
 
   {
@@ -200,7 +211,7 @@ const MyAdvertsComponent = () => {
 </DropdownButton>
 
 
-<DropdownButton id="dropdown-basic-button" title={district}>
+<DropdownButton id="dropdown-basic-button" title='District'>
 
  {
    
@@ -236,7 +247,7 @@ const MyAdvertsComponent = () => {
 </DropdownButton>
 
 
-<DropdownButton id="dropdown-basic-button" title="Mahalle">
+<DropdownButton id="dropdown-basic-button" title="Neighbourhood">
 
   {
     data[selectedCityIndex - 1].towns[selectedDistrictIndex].districts.forEach(element => {
@@ -271,14 +282,14 @@ const MyAdvertsComponent = () => {
 </DropdownButton>
 
 
-<DropdownButton id="dropdown-basic-button" title="Fiyat Aralığı">
+<DropdownButton id="dropdown-basic-button" title="Price range">
 <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
 <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
 </DropdownButton>
 
 
-<DropdownButton id="dropdown-basic-button" title="Oda sayısı">
+<DropdownButton id="dropdown-basic-button" title="Number of rooms">
 <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
 <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
@@ -290,22 +301,39 @@ const MyAdvertsComponent = () => {
 <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
 </DropdownButton>
+</aside>
 
 <div className='filterButtonField'>
 <button className='filterButton'>Filtrele</button>
 </div>
+
+
 </div>
-    </div>
-    <div className="col-sm-16 secondColumn">
+
+<div className='verticalLineSection'></div>
+
+<div className='advertsBody'>
 
 
-    
-      
-    <ul className='cards' onChange={handleAdvertValuesChange} onScroll={handleOnDocumentBottom}>
+
+<div className='reviewAdsContainer'>
+
+  <div className='reviewAds'>
+  <h3>Ilanları incele</h3>
+  <div className='reviewAdsLine'></div>
+</div>
+
+
+  <div className='sortContainer'>
+    <button className='sort' onClick={() => setOpenDropdown(!openDropdown)}>Sort</button>
+  </div>
+
+  
+  <ul className='cards' onChange={handleAdvertValuesChange} onScroll={handleOnDocumentBottom}>
   
      
       
-       {advertArray.length != 0 && advertArray.map((obj) => {
+  {advertArray.length != 0 && advertArray.map((obj) => {
         
         return <AdvertCard id={obj.advertId} price={obj.price} title={obj.title} city={obj.city} district={obj.district} neighbourhood={obj.neighbourhood} floorArea={obj.floorArea} rooms={obj.rooms}  />
         
@@ -316,15 +344,44 @@ const MyAdvertsComponent = () => {
    
      
     </ul>
+
     </div>
-    
-  </div>
+  
+  
 </div>
+
+
+
+   
+      <div className={`sortDropdownMenu ${openDropdown? 'active' : 'inactive'}`}>
+        <ul>
+         
+          <SortDropdown text='Fiyat (En pahalı)' onClick={sortValue = 'Price ASC'}></SortDropdown>
+          <SortDropdown text='Fiyat (En ucuz)' onClick={sortValue = 'Price DESC'}></SortDropdown>
+          <SortDropdown text='Tarih (En yakın)' onClick={sortValue = 'Date ASC'}></SortDropdown>
+          <SortDropdown text='Tarih (En uzak)' onClick={sortValue = 'Date DESC'}></SortDropdown>
+     
+        
+        
+      </ul>
+      </div> 
+    
+
+
+    
+      
+    
+    
+
       
 <BottomScrollListener onBottom={handleOnDocumentBottom} />
 
     
         </div>
+
+        </div>
+
+      
      
 
      

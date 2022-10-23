@@ -6,6 +6,7 @@ import Popup from './Popup'
 
 import {Link} from 'react-router-dom'
 import useForm from './useForm'
+import ProfilePhoto from '../images/profile-example.png'
 
 
 const ProfileComponent = () => {
@@ -75,38 +76,49 @@ const ProfileComponent = () => {
         </div>
 
         <Popup trigger={updateButtonPopup}>
-            <div className='updateFormContainer'>
+            <div className='container'>
+              <div className='row'>
+                <div className='col-sm-12'>
+                  <div className='updateProfileCloseButtonContainer' onClick={() => setUpdateButtonPopup(false)}>
 
-            
-           <form className='updateForm'>
-            
-            <input type='text' className='updateFill' placeholder='Username' />
-            <input type='email' className='updateFill' placeholder='Email Address' />
-            <input type='text' className='updateFill' placeholder='Name' />
-            <input type='text' className='updateFill' placeholder='Gender' />
-            <input type='text' className='updateFill' placeholder='Surname' />
-            <input type='password' className='updateFill' placeholder='Password' />
+                  <div className='updateProfileCloseButton'></div>
 
-           <div className='updateButtonField'>
-            <button className='updatePopupButton'>Güncelle</button>
-            <button className='cancelPopupButton'>Iptal et</button>
+                  </div>
+              
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col-sm-6'>
+                  <div className='profilePhotoContainer'>
+                  <img src={ProfilePhoto} className='profilePhoto' />
+                  <p className='updateProfileNameAndSurname'>Name Surname</p>
+                  </div>
+                </div>
+                <div className='col-sm-6'>
+                  <form className='updateProfileForm'>
+                    <input type='text' placeholder='Username' />
+                    <input type='text' placeholder='First Name' />
+                    <input type='text' placeholder='Last Name' />
+                    <input type='text' placeholder='Gender' />
+                    <input type='text' placeholder='Email' />
+                    <input type='text' placeholder='Password' />
+                  </form>
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col-sm-12'>
+                  <div className='updateProfileButtonContainer'>
+                    <button className='updateProfileConfirmButton'>Confirm</button>
+                    <button className='updateProfileCancelButton'>Cancel</button>
+                  </div>
+                </div>
+              </div>
             </div>
-           </form>
-
-           </div>
 
         </Popup>
 
 
-        <Link to = '/myAdvert'>
-           
-        <div className='advert-button-container'>
-
-            <button className='advert-button'>Yayınladıgın ilanlara göz at</button>
-
-        </div>
-
-        </Link>
+ 
 
         
 

@@ -41,7 +41,7 @@ const MyAdvertsComponent = () => {
 
       return(
         <li className='sortDropdownItem'>
-          {props.text}
+          <a>{props.text}</a>
           
         </li>
         
@@ -187,7 +187,10 @@ const MyAdvertsComponent = () => {
 
 <aside>
 <DropdownButton id="dropdown-basic-button" title='City'>
+
+
   <div className='dropdownHeight'>
+ 
 
   {
    cities.map((element, index) => {
@@ -205,10 +208,12 @@ const MyAdvertsComponent = () => {
 
   
 }
+
 </div>
 
 
 </DropdownButton>
+
 
 
 <DropdownButton id="dropdown-basic-button" title='District'>

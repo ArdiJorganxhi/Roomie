@@ -90,3 +90,111 @@
     color: #fff;
 }
 
+.profilePhotoContainer{
+
+    position: relative;
+    top: 25%;
+    right: 5%;
+}
+
+.profilePhoto{
+
+   
+    width: 100px;
+    height: 100px;
+  
+    border-radius: 50%;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.updateProfileForm{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 20px;
+}
+
+.updateProfileForm input{
+
+    border: none;
+    background-color: #e0e0e0;
+    color: #e0e0e0e0;
+    border-bottom: 1px solid #000;
+}
+
+
+.updateProfileForm input::placeholder{
+
+    font-size: 1.3rem;
+}
+
+.updateProfileNameAndSurname{
+
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.updateProfileButtonContainer{
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
+    justify-content: center;
+}
+
+.updateProfileConfirmButton{
+
+    border: 0;  
+    color: #fff;
+    background-color: #ff4053;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.updateProfileCancelButton{
+    border: 1px solid #FF4053;
+    color: #ff4053;
+    background-color: #e0e0e0;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.updateProfileButtonContainer button + button{
+    margin-left: 30px;
+}
+
+.updateProfileCloseButton{
+
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-size: 3rem;
+    cursor: pointer;
+    color: #000;
+    margin-top: 10px;
+  }
+
+  .updateProfileCloseButton::after{
+
+    content: "\d7";
+    font-size: 4rem;
+    font-weight: lighter;
+    
+    cursor: pointer;
+
+  }
+
+
+  .updateProfileCloseButtonContainer{
+
+    padding: 15px;
+  }

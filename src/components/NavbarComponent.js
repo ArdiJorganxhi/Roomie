@@ -5,15 +5,19 @@ import {FaBars, FaTimes} from 'react-icons/fa'
 import profile from '../images/profile-example.png'
 import useForm from './useForm'
 import Popup from './Popup'
+import CardPhoto from '../images/cardPhoto.webp'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { faNotebook } from '@fortawesome/sharp-solid-svg-icons'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
-import { FaPowerOff } from 'react-icons/fa'
+import { faPowerOff } from '@fortawesome/sharp-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaTrash } from 'react-icons/fa'
 import BookmarkPng from '../images/bookmark.png'
+import { DropdownButton } from 'react-bootstrap'
+import DropdownItem from 'react-bootstrap/esm/DropdownItem'
+import { Dropdown } from 'react-bootstrap'
 
 const Navbar = () => {
 
@@ -27,16 +31,57 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
 
 
+    const data =  require('../assets/data.json')
+   
+
+    const [city, setCity] = useState('')
+
+    const [district, setDistrict] = useState('')
+
+    const [neighbourhood, setNeighbourhood] = useState('')
+
+    const [cityIndex, setCityIndex] = useState(1);
+
+    const [districtIndex, setDistrictIndex] = useState(1);
+
+    let cities = []
+    let districts = []
+    let neighbourhoods = []
+
+    let tempElement = '';
+    let tempIndex = 0;
+
+    let cityCount = 0;
+    let districtCount = 0;
+
+    data.forEach(element => {
+        
+      if(cityCount == 0){
+        cities.push(' ')
+      }
+     cities.push(element.name)
+     cityCount++;
+      
+   });
+
+
+
+
+
     function DropdownItem(props){
       return(
         <li className='dropdownItem'>
-
+          <FontAwesomeIcon icon={props.icon} className='dropdownIcon' />
           <img src={props.img}></img>
           <a>{props.text}</a>
 
         </li>
       );
     }
+
+
+
+    
 
   return (
     <>
@@ -57,70 +102,66 @@ const Navbar = () => {
     <div className='profile-field'>
     <button className='create-ad' onClick={() => setCreateAdvertButtonPopup(true)}>Create an advert</button>
     <Popup trigger={createAdvertButtonPopup}>
-    <form className='createAdvert' onSubmit={handleAdvertSubmit} noValidate>
-
-    <div class="row">
-  <div class="col-sm-6">
-
-    <div className='emptyImageSquare'>Fotoğraf sürükle veya yükle</div>
-
-    <div className='row'>
-      <div className='col-sm'>
-      <div className='emptyShortImageSquare'>
-      <p>Hello World</p>
-    </div>
-    
-      </div>
-      <div className='col-sm'>
-      <div className='emptyShortImageSquare'>
-      <p>Hello World</p>
-    </div>
-    
-      </div>
-      <div className='col-sm'>
-      <div className='emptyShortImageSquare'>
-      <p>Hello World</p>
-    </div>
-    
-      </div>
-    </div>
    
 
+    <div class="container">
 
 
-  </div>
-  <div class="col-sm-6">
-    <input type='text' value={advertValues.title} onChange={handleAdvertChange}  className='advertFill' placeholder='Ilan başlığı ekle' name='title' />
-    <input type='text' className='advertFill' placeholder='Il' value={advertValues.city} onChange={handleAdvertChange} name='city'  />
-    <input type='text' className='advertFill' placeholder='Ilçe' value={advertValues.district} onChange={handleAdvertChange} name='district'  />
-    <input type='text' className='advertFill' placeholder='Mahalle' value={advertValues.neighbourhood} onChange={handleAdvertChange} name='neighbourhood'  />
-    <input type='text' className='advertFill' placeholder='Oda sayısı' value={advertValues.rooms} onChange={handleAdvertChange} name='rooms'  />
-    <input type='text' className='advertFill' placeholder='m2' value={advertValues.floorArea} onChange={handleAdvertChange} name='floorArea'  />
-    <input type='number' className='advertFill' placeholder='Fiyat' value={advertValues.price} onChange={handleAdvertChange} name='price'  />
+      <div className='row'>
+        <div className='col-sm-12'>
+            <div className='createCloseButtonContainer'>
+
+            
+            <div className='createCloseButton' onClick={() => setCreateAdvertButtonPopup(false)}></div>
+            </div>
+        </div>
+      </div>
+  <div class="row">
+    <div class="col-sm-6">
+        <div className='createAdvertLeft'>
+        <div className='createAdvertImages'>
+          <img src={CardPhoto} />
+          <img src={CardPhoto} />
+
+          <div className='createAdvertVertical'></div>
+
+       </div>
+       
+        </div>
+        
+    </div>
+    <div class="col-sm-6">
+      <form className='createAdvertInput'>
+      <input type='text' placeholder='Title' />
+      <input type='text' placeholder='City' />
+      <input type='text' placeholder='District' />
+      <input type='text' placeholder='Neighbourhood' />
+      <input type='text' placeholder='Rooms' />
+      <input type='text' placeholder='Floor Area' />
+      <input type='text' placeholder='Price' />
+      <input type='text' placeholder='Content' className='createAdvertContent' />
+      
+
+       
+       
+
+
+
+      
+      </form>
+    </div>
+   
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-6">
-    <input type='text' className='advertDescription' placeholder='Açıklama ekle' value={advertValues.content} onChange={handleAdvertChange} />
-  </div>
-  
-</div>
-
 
 <div className='row'>
   <div className='col-sm-12'>
-
-    <div className='advertUpdateButtonField'>
-      <button className='advertUpdateButton' onClick={handleAdvertSubmit}>Update</button>
-      
-      
+    <div className='createAdvertButtonContainer'>
+      <button className='createAdvertButton'>Create</button>
     </div>
   </div>
 </div>
-
-
-    </form>
- 
+    
 
 
         </Popup>
@@ -134,19 +175,19 @@ const Navbar = () => {
       <div className={`dropdownMenu ${open? 'active' : 'inactive'}`}>
         <ul>
          
-        <DropdownItem img={<FontAwesomeIcon icon={faBookmark} />}  text={'Saved Ads'} />
-        <Link to='/myAdvert'>
+        <DropdownItem icon={faBookmark} text={'Saved Ads'} />
+        <Link to='/myAdvert' style={{ color: '#000' }}>
 
-<DropdownItem img={<FontAwesomeIcon icon={faNotebook} />}  text={'My Ads'} />
+<DropdownItem icon={faNotebook}  text={'My Ads'} />
 </Link>
-        <Link to='/profile'>
+        <Link to='/profile' style={{ color: '#000' }}>
 
-        <DropdownItem img={<FontAwesomeIcon icon={faGear} />}  text={'Settings'} />
+        <DropdownItem icon={faGear}  text={'Settings'} />
 
         </Link>
 
-        <Link to='/login'>
-        <DropdownItem img={<FontAwesomeIcon icon={FaPowerOff} />}  text={'Log Out'} /> 
+        <Link to='/login' style={{ color: '#000' }}>
+        <DropdownItem icon={faPowerOff}  text={'Log Out'} /> 
         </Link>
      
         

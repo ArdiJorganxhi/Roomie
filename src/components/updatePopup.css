@@ -11,6 +11,8 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
+
+    transition: 0.5s ease-in-out;
     
 }
 
@@ -20,7 +22,7 @@
     width: 70%;
 
     height: auto;
-    background-color: #fff;
+    background-color: #e0e0e0;
     border-radius: 30px;
 }
 

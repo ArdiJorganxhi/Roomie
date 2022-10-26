@@ -84,7 +84,7 @@ const AdvertCard = (props) => {
     e.preventDefault();
     let token = localStorage.getItem('token')
     console.log(tempAdvertValues)
-    axios.post(baseUrl + '/api/Advert', tempAdvertValues, {
+    axios.post('/api/Advert', tempAdvertValues, {
       headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer '+ token
@@ -107,7 +107,7 @@ const AdvertCard = (props) => {
 
   const deleteAdvert = e => {
     let token = localStorage.getItem('token')
-      axios.delete(baseUrl + '/api/Advert/' + advertId, { headers: {
+      axios.delete('/api/Advert/' + advertId, { headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer '+ token
     },      }).then(
@@ -121,7 +121,13 @@ const AdvertCard = (props) => {
       )
   }
 
-  axios.get(baseUrl + '/api/Advert/1').then(
+  axios.get('/api/Advert/1', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+    }
+  }).then(
     res => {
       console.log(res.body);
     }

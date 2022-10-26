@@ -18,7 +18,8 @@ import BookmarkPng from '../images/bookmark.png'
 import { DropdownButton } from 'react-bootstrap'
 import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 import { Dropdown } from 'react-bootstrap'
-
+import { faHouse } from '@fortawesome/sharp-solid-svg-icons'
+import { MultiSelect } from 'primereact'
 const Navbar = () => {
 
 
@@ -72,7 +73,7 @@ const Navbar = () => {
       return(
         <li className='dropdownItem'>
           <FontAwesomeIcon icon={props.icon} className='dropdownIcon' />
-          <img src={props.img}></img>
+       
           <a>{props.text}</a>
 
         </li>

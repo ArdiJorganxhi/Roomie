@@ -252,6 +252,50 @@ body{
   flex-direction: column;
   justify-content: center;
 }
+
+
+.sortDropdownIcon{
+
+  width: 30px;
+  font-size: 1.5rem;
+
+}
+
+
+.priceRangeContainer{
+
+  display: flex;
+  flex-direction: row;
+
+}
+
+.minMaxInput{
+
+  width: 60px;
+  border: none;
+  border-bottom: 1px solid #000;
+
+ 
+}
+
+.minMaxInput::placeholder{
+
+  text-align: center;
+  color: #ff0453;
+}
+
+.minMaxInput + p{
+  margin-left: 5px;
+  margin-right: 5px;
+  
+}
+
+
+.minMaxSeperator{
+
+  border-bottom: 1px solid #000;
+  margin-bottom: 10px;
+}
   
 
  

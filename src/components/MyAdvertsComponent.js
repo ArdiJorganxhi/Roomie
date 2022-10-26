@@ -15,8 +15,16 @@ import AdvertCard from './AdvertCard'
 import useForm from './useForm'
 import ExampleJSON from '../example.json'
 import { baseUrl } from '../API/baseUrl'
+import { faDollar, faDollarSign } from '@fortawesome/sharp-solid-svg-icons'
 import { BottomScrollListener, useBottomScrollListener } from 'react-bottom-scroll-listener'
 import getMap from '../utilities/GetMap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays } from '@fortawesome/free-regular-svg-icons'
+import { MultiSelect } from 'primereact'
+import { Dialog } from 'primereact/dialog';
+import { Accordion, AccordionTab } from 'primereact/accordion';
+
+
 
 
 
@@ -37,10 +45,21 @@ const MyAdvertsComponent = () => {
     var functionCount = 0;
     var neighbourhoodCount = 0;
 
+    const citySelectItems = [
+      {label: '1+1', value: '1+1'},
+      {label: '2+0', value: '2+0'},
+      {label: '2+1', value: '2+1'},
+      {label: '3+1', value: '3+1'},
+      {label: '4+1', value: '4+1'}
+  ];
+
+  
+
     function SortDropdown(props){
 
       return(
         <li className='sortDropdownItem'>
+          <FontAwesomeIcon icon={props.icon} className='sortDropdownIcon' />
           <a>{props.text}</a>
           
         </li>
@@ -129,9 +148,10 @@ const MyAdvertsComponent = () => {
         "applicationUserId": 2
       }
 
-      axios.post(baseUrl + '/api/Advert/filter', values, {
+      axios.post('/api/Advert/filter', values, {
         headers: {
           'Access-Control-Allow-Origin' : '*',
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
         }
       }).then(
         res => {
@@ -275,7 +295,7 @@ const MyAdvertsComponent = () => {
 
 
   {
-    neighbourhoods.map((element, index) => {
+    neighbourhoods.map((element) => {
 
       return(
         <Dropdown.Item>{element}</Dropdown.Item>
@@ -288,17 +308,21 @@ const MyAdvertsComponent = () => {
 
 
 <DropdownButton id="dropdown-basic-button" title="Price range">
-<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+
+  <div className='priceRangeContainer'>
+  <input type='text' placeholder='Min' className='minMaxInput' />
+  <br></br>
+  <input type='text' placeholder='Max' className='minMaxInput' />
+  </div>
+
+
 </DropdownButton>
 
 
-<DropdownButton id="dropdown-basic-button" title="Number of rooms">
-<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-</DropdownButton>
+
+<MultiSelect  options={citySelectItems} />
+ 
+
 
 
 <DropdownButton id="dropdown-basic-button" title="m2">
@@ -361,10 +385,10 @@ const MyAdvertsComponent = () => {
       <div className={`sortDropdownMenu ${openDropdown? 'active' : 'inactive'}`}>
         <ul>
          
-          <SortDropdown text='Fiyat (En pahalı)' onClick={sortValue = 'Price ASC'}></SortDropdown>
-          <SortDropdown text='Fiyat (En ucuz)' onClick={sortValue = 'Price DESC'}></SortDropdown>
-          <SortDropdown text='Tarih (En yakın)' onClick={sortValue = 'Date ASC'}></SortDropdown>
-          <SortDropdown text='Tarih (En uzak)' onClick={sortValue = 'Date DESC'}></SortDropdown>
+          <SortDropdown icon={faDollarSign} text='(Ascending)' onClick={sortValue = 'Price ASC'}></SortDropdown>
+          <SortDropdown icon={faDollarSign} text='(Descending)' onClick={sortValue = 'Price DESC'}></SortDropdown>
+          <SortDropdown icon={faCalendarDays} text='(Ascending)' onClick={sortValue = 'Date ASC'}></SortDropdown>
+          <SortDropdown icon={faCalendarDays} text='(Descending)' onClick={sortValue = 'Date DESC'}></SortDropdown>
      
         
         
